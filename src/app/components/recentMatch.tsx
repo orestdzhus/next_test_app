@@ -25,7 +25,7 @@ export default function RecentMatch({match}: IProps) {
 
     const colorOfTheTeam = player.team.toLowerCase();
 
-    const {assets: {agent: {small}}, stats: {kills, deaths, assists}} = player;
+    const {assets: {agent: {small}, card: {small: smallCard}}, stats: {kills, deaths, assists}} = player;
 
     const playerTeamResult = teams[colorOfTheTeam]?.has_won;
 
@@ -49,9 +49,8 @@ export default function RecentMatch({match}: IProps) {
     const gameDuration = (game_length / 60).toFixed(1);
 
     return (
-        <div className="h-62 bg-gray-600 bg-10 m-5 text-white text-lg p-4">
+        <div className="h-62 bg-neutral-900 bg-10 m-5 text-white text-lg p-4">
             <h2>Map played - {map}</h2>
-            {/*<h2>Player`s team - {playerTeamResult ? "WIN" : "LOST"}</h2>*/}
             <h2>Player`s team - {gameResult}</h2>
             <h2>Started at - {game_start_patched}</h2>
             <h2>Game duration - {gameDuration} minutes</h2>
@@ -62,5 +61,6 @@ export default function RecentMatch({match}: IProps) {
                 <h3>Assists: {assists}</h3>
             </div>
             <img src={small} alt="xxx"/>
+            <img src={smallCard} alt="card"/>
         </div>);
 };
