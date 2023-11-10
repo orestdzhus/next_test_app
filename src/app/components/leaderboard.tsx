@@ -5,12 +5,11 @@ import LeaderboardItem from "@/app/components/leaderboardItem";
 import React, {useState} from "react";
 import InfiniteScroll from 'react-infinite-scroller';
 import Link from "next/link";
+
 export default function Leaderboard() {
 
     const {leaderboard: items} = useAppSelector(state => state.playerReducer);
 
-    console.log(items);
-    // const items = Array.from({length: 100}, (_, index) => `Item ${index + 1}`);
     const itemsPerPage = 1000;
 
     const [itemsToShow, setItemsToShow] = useState(items.slice(0, itemsPerPage));
@@ -49,10 +48,16 @@ export default function Leaderboard() {
             >
                 {itemsToShow.map((item, index) => (
                     <div key={index}>
-                        <Link onClick={handleLinkClick}
-                              key={index} href={`/recent_matches?name=${item.gameName}&tag=${item.tagLine}`}
-                              className={'block hover:bg-gray-200 text-blue-500 text-center m-3 text-2xl'}
-                        >{item.gameName}</Link>
+                        <Link
+                            className={'block hover:bg-gray-200 text-blue-500 text-center m-3 text-2xl'}
+                            key={index} href={{
+                            pathname: `/recent_matches`,
+                            query: {
+                                name: item.gameName,
+                                tag: item.tagLine,
+                                puuid: item.puuid,
+                            },
+                        }}>{item.gameName}</Link>
                     </div>
                 ))}
             </InfiniteScroll>}

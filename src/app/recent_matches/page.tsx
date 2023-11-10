@@ -12,15 +12,15 @@ export default function RecentMatches() {
     const nameFromUrl = searchParams.get("name");
     const tagFromUrl = searchParams.get("tag");
 
-    console.log(nameFromUrl, tagFromUrl);
-
     const dispatch = useDispatch();
 
     const {recentMatches} = useAppSelector(state => state.playerReducer);
 
+
     useEffect(() => {
         // @ts-ignore
-        dispatch(playerActions.getRecentMatches({name: "Fujii", tag: "Bean"}));
+        dispatch(playerActions.getRecentMatches({name: nameFromUrl, tag: tagFromUrl}));
+
     }, [dispatch]);
 
 
