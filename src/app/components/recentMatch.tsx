@@ -49,15 +49,15 @@ export default function RecentMatch({match}: IProps) {
     const gameDuration = (game_length / 60).toFixed(1);
 
     return (
-        <div className="h-62 bg-10 bg-amber-400 m-5 text-black text-lg p-4 shadow-lg shadow-gray-700">
+        <div className="h-62 bg-10 bg-blue-900 m-5 text-amber-100 text-lg p-4 shadow-lg shadow-gray-700">
 
             <div className="flex">
                 <div>
                     <img className="shadow-lg shadow-gray-800" style={{width: 170, height: 320}} src={large} alt="large"/>
-                    <h1 className="text-3xl text-amber-300 p-4 hover:text-amber-900">{playerName}</h1>
+                    <h1 className="text-3xl text-amber-300 p-4 hover:text-black">{playerName}</h1>
                 </div>
 
-                <div className="m-3 text-neutral-800 decoration-1 text-2xl">
+                <div className="m-3 text-amber-50 decoration-1 text-2xl">
                     <h2>Map played - {map}</h2>
                     <h2>Player`s team - {gameResult}</h2>
                     <h2>Started at - {game_start_patched}</h2>
