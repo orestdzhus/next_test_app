@@ -1,6 +1,7 @@
 "use client";
 
 import {useSearchParams} from "next/navigation";
+import Image from "next/image";
 
 interface IProps {
     match: any;
@@ -15,6 +16,7 @@ export default function RecentMatch({match}: IProps) {
     const {metadata: {map, game_start_patched, game_length}, players: {all_players}, teams} = match;
 
     const player = all_players.find((item: any) => item.puuid === playerPuuid);
+    
     const {
         assets: {agent: {small}, card: {small: smallCard, large, wide}},
         stats: {kills, deaths, assists},
