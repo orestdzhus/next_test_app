@@ -57,7 +57,7 @@ export default function Leaderboard() {
                 {itemsToShow.map((item, index) => (
                     <div key={index}>
                         <Link
-                            className={'block hover:bg-gray-200 text-blue-500 text-center m-3 text-2xl'}
+                            className={'block hover:bg-gray-200 font-bold text-black font-mono text-center p-2  text-2xl'}
                             key={index} href={{
                             pathname: `/recent_matches`,
                             query: {

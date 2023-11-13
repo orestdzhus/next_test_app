@@ -55,19 +55,19 @@ export default function RecentMatch({match}: IProps) {
     const gameDuration = (game_length / 60).toFixed(1);
 
     return (
-        <div className="h-62 bg-10 bg-blue-900 m-5 text-amber-100 text-lg p-4 shadow-lg shadow-gray-700">
+        <div className="h-62 bg-10 bg-gray-300 m-5 text-amber-100 text-lg p-4 shadow-lg shadow-gray-700">
 
             <div className="flex">
                 <div>
                     <img className="shadow-lg shadow-gray-800" style={{width: 170, height: 320}} src={large} alt="large"/>
-                    <h1 className="text-3xl text-amber-300 p-4 hover:text-black">{playerName}</h1>
+                    <div className="text-3xl m-2 text-black font-bold font-mono ">{playerName}</div>
                 </div>
 
-                <div className="m-3 text-amber-50 decoration-1 text-2xl">
-                    <h2>Map played - {map}</h2>
-                    <h2>Player`s team - {gameResult}</h2>
-                    <h2>Started at - {game_start_patched}</h2>
-                    <h2>Game duration - {gameDuration} minutes</h2>
+                <div className="m-3 ml-8 text-gray-800 font-mono decoration-1 text-2xl">
+                    <h2 className="m-3">Map played - {map}</h2>
+                    <h2 className="m-3">Player`s team - {gameResult}</h2>
+                    <h2 className="m-3">Started at - {game_start_patched}</h2>
+                    <h2 className="m-3">Game duration - {gameDuration} minutes</h2>
                     <div className="m-3 flex">
                         <div>
                             <header>Player`s KDA</header>
@@ -78,8 +78,8 @@ export default function RecentMatch({match}: IProps) {
                             </div>
                         </div>
                         <div className="ml-60">
-                            <h1 className="text-white m-3">Player`s agent</h1>
-                            <img src={small} alt="xxx"/>
+                            <img className="shadow-lg shadow-gray-500" src={small} alt="xxx"/>
+                            <div className="text-neutral-900 font-extrabold font-mono m-2">Player`s agent</div>
                         </div>
                     </div>
                 </div>
