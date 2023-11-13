@@ -1,16 +1,13 @@
 "use client";
 
 import {useAppDispatch, useAppSelector} from "@/hooks/redux.hooks";
-import LeaderboardItem from "@/app/components/leaderboardItem";
 import React, {useEffect, useState} from "react";
 import InfiniteScroll from 'react-infinite-scroller';
 import Link from "next/link";
 import {playerActions} from "@/redux/slices/player.slice";
-
 export default function Leaderboard() {
 
     const {leaderboard: items} = useAppSelector(state => state.playerReducer);
-
 
     const dispatch = useAppDispatch();
 
@@ -45,6 +42,7 @@ export default function Leaderboard() {
 
     };
 
+    // @ts-ignore
     return (
 
         <div>
@@ -54,20 +52,26 @@ export default function Leaderboard() {
                 hasMore={hasMore}
                 loader={<div key={0}>Loading ...</div>}
             >
-                {itemsToShow.map((item, index) => (
-                    <div key={index}>
-                        <Link
-                            className={'block hover:bg-gray-200 font-bold text-black font-mono text-center p-2  text-2xl'}
-                            key={index} href={{
-                            pathname: `/recent_matches`,
-                            query: {
-                                name: item.gameName,
-                                tag: item.tagLine,
-                                puuid: item.puuid,
-                            },
-                        }}>{item.gameName}</Link>
-                    </div>
-                ))}
+                {itemsToShow.map((item, index) =>{
+                        const {gameName, tagLine, puuid} = item;
+
+                        return (
+                            <div key={index}>
+                                {gameName && tagLine && puuid && <Link
+                                    className={'block hover:bg-gray-200 font-bold text-black font-mono text-center p-2  text-2xl'}
+                                    key={index} href={{
+                                    pathname: `/recent_matches`,
+                                    query: {
+                                        name: gameName,
+                                        tag: tagLine,
+                                        puuid: puuid,
+                                    },
+                                }}>{gameName}</Link>}
+                            </div>
+                        );
+                    }
+
+                    )}
             </InfiniteScroll>}
         </div>
     );

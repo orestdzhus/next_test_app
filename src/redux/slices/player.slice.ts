@@ -1,7 +1,6 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {playerService} from "@/services/player.service";
 import {AxiosError} from "axios";
-import {act} from "react-dom/test-utils";
 
 interface IState {
     leaderboard: [];

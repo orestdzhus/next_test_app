@@ -22,7 +22,7 @@ export default function RecentMatch({match}: IProps) {
         return <div>No data available</div>;
     }
 
-    const player = all_players.find((item) => item.puuid === playerPuuid);
+    const player = all_players.find((item: any) => item.puuid === playerPuuid);
 
     if (!player) {
         return <div></div>;
