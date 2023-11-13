@@ -38,10 +38,6 @@ export default function Leaderboard() {
         }
     };
 
-    const handleLinkClick = () => {
-
-    };
-
     // @ts-ignore
     return (
 
@@ -52,7 +48,7 @@ export default function Leaderboard() {
                 hasMore={hasMore}
                 loader={<div key={0}>Loading ...</div>}
             >
-                {itemsToShow.map((item, index) =>{
+                {itemsToShow.map((item, index) => {
                         const {gameName, tagLine, puuid} = item;
 
                         return (
@@ -70,8 +66,7 @@ export default function Leaderboard() {
                             </div>
                         );
                     }
-
-                    )}
+                )}
             </InfiniteScroll>}
         </div>
     );
