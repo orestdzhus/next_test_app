@@ -1,14 +1,22 @@
 "use client";
 
-import {useAppSelector} from "@/hooks/redux.hooks";
+import {useAppDispatch, useAppSelector} from "@/hooks/redux.hooks";
 import LeaderboardItem from "@/app/components/leaderboardItem";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import InfiniteScroll from 'react-infinite-scroller';
 import Link from "next/link";
+import {playerActions} from "@/redux/slices/player.slice";
 
 export default function Leaderboard() {
 
     const {leaderboard: items} = useAppSelector(state => state.playerReducer);
+
+
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(playerActions.getLeaderBoard());
+    }, []);
 
     const itemsPerPage = 1000;
 

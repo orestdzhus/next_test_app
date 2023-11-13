@@ -9,19 +9,25 @@ interface IProps {
 }
 
 export default function RecentMatch({match}: IProps) {
+
     const searchParams = useSearchParams();
     const playerName = searchParams.get("name");
     const playerPuuid = searchParams.get("puuid");
 
     const {metadata: {map, game_start_patched, game_length}, players: {all_players}, teams} = match;
 
+
+    if (!match || !match.metadata || !match.players || !match.players.all_players || !match.teams) {
+        // Якщо дані не існують, можна повернути або вивести помилку
+        return <div>No data available</div>;
+    }
+
     const player = all_players.find((item) => item.puuid === playerPuuid);
 
     if (!player) {
-        return
+        return <div>No player found</div>;
     }
 
-    console.log(player);
 
     const colorOfTheTeam = player.team.toLowerCase();
 
